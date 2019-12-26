@@ -1,18 +1,9 @@
 // import 'dotenv/config';
-import axios from 'axios';
-import processPosts from './utils/processPosts';
+import getSpecificTopic from './operations/getSpecificTopic';
 
-async function getSatNight() {
-  try {
-    const { data } = await axios.get(
-      'https://bloard.com/bloards/gbs/topics/saturday-night-bloard',
-    );
-
-    const butt = processPosts(data);
-    console.log(butt);
-  } catch (error) {
-    console.log(error);
-  }
+async function run() {
+  const satNight = await getSpecificTopic('saturday-night-bloard');
+  console.log(satNight);
 }
 
-getSatNight();
+run();
